@@ -23,3 +23,61 @@ variable "common_tags" {
 variable "vpc_tags" {
     default = {}
 }
+
+variable "ig_tags" {
+    default = {}
+}
+
+variable "public_subnet_tags" {
+    default = {}
+}
+
+variable "public_subnet_cidrs" {
+    type = list
+    validation { # terraform variable size condition --> input variables
+    condition     = length(var.public_subnet_cidrs) == 2
+    error_message = "please provide 2 valid public subnet CIDR"
+  }
+}
+
+variable "private_subnet_tags" {
+    default = {}
+}
+
+variable "private_subnet_cidrs" {
+    type = list
+    validation { # terraform variable size condition --> input variables
+    condition     = length(var.private_subnet_cidrs) == 2
+    error_message = "please provide 2 valid private subnet CIDR"
+  }
+}
+
+variable "database_subnet_tags" {
+    default = {}
+}
+
+variable "database_subnet_cidrs" {
+    type = list
+    validation { # terraform variable size condition --> input variables
+    condition     = length(var.database_subnet_cidrs) == 2
+    error_message = "please provide 2 valid database subnet CIDR"
+  }
+}
+
+variable "nat_gateway_tags" {
+    default = {}
+}
+
+variable "public_route_table_tags" {
+    default = {}
+}
+
+
+variable "private_route_table_tags" {
+    default = {}
+}
+
+
+variable "database_route_table_tags" {
+    default = {}
+}
